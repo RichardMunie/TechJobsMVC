@@ -10,8 +10,8 @@
                 <input type="radio"
                        name="searchType"
                        id="@column.Key"
-                       value="@column.Key" 
-                       checked="@column.Key == 'all''"/>
+                       value="@column.Key"
+                       checked="@column.Key == 'all''" />
                 <label for="@column.Key">@column.Value</label>
             </span>
         }
@@ -25,12 +25,29 @@
     <input type="submit" value="Search" />
 </form>
 
-<hr />
+
 
 @if (ViewBag.jobs != null)
 {
 
     <h3>@ViewBag.jobs.Count Result(s)</h3>
+    @foreach (Dictionary<string, string> job in ViewBag.jobs)
+    {
 
-    // TODO #2 - Loop over jobs dictionary and display all job fields 
+    <table class="job-listing">
+        @foreach (KeyValuePair<string, string> category in job)
+        {
+        <tr>
+            <td>@category.Key</td>
+            <td>@category.Value</td>
+        </tr>
+        }
+    </table>
+
+
+     }
 }
+
+
+
+
