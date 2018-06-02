@@ -10,6 +10,7 @@ namespace TechJobs.Controllers
         {
             ViewBag.columns = ListController.columnChoices;
             ViewBag.title = "Search";
+            ViewBag.choice = "all";
             return View();
         }
 
@@ -17,6 +18,7 @@ namespace TechJobs.Controllers
         public IActionResult Results(string searchType, string searchTerm)
         {
             ViewBag.columns = ListController.columnChoices;
+            ViewBag.choice = searchType;
             ViewBag.title = "Search";
             if (searchType == "all")
             {

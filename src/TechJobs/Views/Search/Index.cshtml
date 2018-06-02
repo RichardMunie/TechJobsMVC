@@ -1,6 +1,6 @@
 ﻿<h1>@ViewBag.title</h1>
 
-<form action="/Search/Results">
+<form action="/Search/Results" autocomplete="on">
     <h2>Search by:</h2>
 
     <p>
@@ -11,7 +11,7 @@
                        name="searchType"
                        id="@column.Key"
                        value="@column.Key"
-                       checked="@column.Key == 'all''" />
+                       checked=@(column.Key == ViewBag.choice) />
                 <label for="@column.Key">@column.Value</label>
             </span>
         }
@@ -38,7 +38,7 @@
         @foreach (KeyValuePair<string, string> category in job)
         {
         <tr>
-            <td>@category.Key</td>
+            <td>@category.Key.First().ToString().ToUpper()@category.Key.Substring(1)</td>
             <td>@category.Value</td>
         </tr>
         }
